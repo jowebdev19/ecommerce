@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Hero() {
   return (
-    <section className='relative flex flex-row justify-evenly items-center w-full'>
+    <section className='hidden md:flex relative flex-row justify-evenly items-center w-full'>
       <img className='w-full' src='/heroimglarge.webp'/>
         <div className='flex justify-evenly items-center flex-row absolute w-full'>
             <span>&nbsp;</span>
