@@ -25,7 +25,7 @@ export default function Header() {
         <Menu onClick={handleMenuClick} className='block md:hidden hover:cursor-pointer' size={35}/>         
         <nav className='hidden md:block'>
           <Link className='nav-link'>Home</Link>
-          <Link className='nav-link'>Shop</Link>
+          <Link className='nav-link' to='/shop'>Shop</Link>
           <Link className='nav-link'>Contact Us</Link>
         </nav>
         <button className='relative w-[24px]'>

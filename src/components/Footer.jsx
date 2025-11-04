@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 export default function Footer() {
   return (
     <footer className='flex flex-col justify-center items-center bg-gray-800 text-gray-300'>
-      <div className='grid grid-cold-1 md:grid-cols-3 gap-4 p-5'>
+      <div className='grid grid-col-1 md:grid-cols-3 gap-4 p-5'>
         <div>
           <h3 className='text-white'>NOX CLOTHING</h3>
           <p>Contemporary clothing designed for comfort and style. Sustainable materials, ethical production.</p>
@@ -14,7 +14,7 @@ export default function Footer() {
           <ul>
             <li className='my-2'><Link>All products</Link></li>
             <li className='my-2'><Link>{`Women's Collection`}</Link></li>
-            <li className='my-2'><Link>{`Women's Collection`}</Link></li>
+            <li className='my-2'><Link>{`Men's Collection`}</Link></li>
           </ul>
         </div>
         <div>
