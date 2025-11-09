@@ -6,8 +6,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useCart } from '../zustand/useCart';
 
 export default function ProductCard({productInfo}) {
+
+  const addToCart = useCart((state) => state.addToCart)
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -24,8 +27,7 @@ export default function ProductCard({productInfo}) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <button onClick={() => addToCart(productInfo)} className='bg-amber-400 text-black p-1 hover:cursor-pointer' size="small">Add to Cart</button>
       </CardActions>
     </Card>
   );

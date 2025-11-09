@@ -9,8 +9,6 @@ export default function Shop() {
       setProductFilter(event.target.value)
     }
 
-    console.log(productFilter)
-
   return (
     <div className='flex justify-center items-center flex-col py-10'>
         <h1 className='text-2xl'>{productFilter.toUpperCase()}</h1>

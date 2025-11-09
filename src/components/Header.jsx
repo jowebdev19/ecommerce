@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ShoppingBag, Menu } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import {useCart} from '../zustand/useCart'
 
 export default function Header() {
   const navigate = useNavigate()
   const [mobileMenu, setMobileMenu] = useState('hidden')
+  const [openCartMenu, setOpenCartMenu] = useState(false)
+  const addToCart = useCart((state) => state.addToCart)
+  const removeFromCart = useCart((state) => state.removeFromCart)
+  const cart = useCart((state) => state.cart)
 
   const handleMenuClick = () => {
     mobileMenu === 'hidden' ? setMobileMenu('block') : setMobileMenu('hidden')
@@ -28,10 +33,18 @@ export default function Header() {
           <Link className='nav-link' to='/shop'>Shop</Link>
           <Link className='nav-link'>Contact Us</Link>
         </nav>
-        <button className='relative w-[24px]'>
-          <ShoppingBag className='mr-10 hover:cursor-pointer'/>
+        <button className='relative w-[24px] mr-28'>
+          <ShoppingBag onClick={() => setOpenCartMenu((prev) => !prev)} className='hover:cursor-pointer'/>
           <span className='absolute -top-1 -right-1 bg-amber-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>{0}</span>
+            {
+              openCartMenu && (
+                <ul className='absolute bg-white'>
+                  {}
+                </ul>
+              )
+            }
         </button>
+        <button onClick={() => removeFromCart(2)}>delete</button>
     </div>
   )
 }

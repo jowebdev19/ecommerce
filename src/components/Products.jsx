@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function Products({ filter }) {
   const [products, setProducts] = useState(null);
-  console.log(products)
+  //console.log(products)
 
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products").then((response) => {
@@ -18,7 +18,7 @@ export default function Products({ filter }) {
             }
           })
         );
-        console.log(products)
+        //console.log(products)
       }
     });
   }, [filter]);

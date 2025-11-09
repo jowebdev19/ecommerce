@@ -38,7 +38,7 @@ export function CardProvider({children}){
         } else {
             setCartProducts(
                 cartProducts.map(item => 
-                    item.itemInfo.id === product.id
+                    item.product.id === product.id
                     ? {...item, quantity: item.quantity + 1}
                     : item
                 )
