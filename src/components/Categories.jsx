@@ -1,27 +1,29 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Categories() {
+  const navigate = useNavigate()
   const categories = [
     {
       id: 1,
       name: "Women's Collection",
       image:
         "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80",
-      link: "/collections/women",
+      link: "women's clothing",
     },
     {
       id: 2,
       name: "Men's Collection",
       image:
         "https://images.unsplash.com/photo-1516826957135-700dedea698c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-      link: "/collections/men",
+      link: "men's clothing",
     },
     {
       id: 3,
-      name: "Accessories",
+      name: "Electronics",
       image:
         "https://images.unsplash.com/photo-1556306535-0f09a537f0a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-      link: "/collections/accessories",
+      link: "electronics",
     },
   ];
   return (
@@ -33,9 +35,9 @@ export default function Categories() {
        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-[75%] pt-10">
           {categories.map((category) => (
             <a
-              href={category.link}
               key={category.id}
               className="group block relative overflow-hidden h-96"
+              onClick={() =>navigate('/shop', {state: category.link})}
             >
               <img
                 src={category.image}

@@ -7,10 +7,12 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useCart } from '../zustand/useCart';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductCard({productInfo}) {
 
   const addToCart = useCart((state) => state.addToCart)
+  const navigate = useNavigate()
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -28,6 +30,7 @@ export default function ProductCard({productInfo}) {
       </CardContent>
       <CardActions>
         <button onClick={() => addToCart(productInfo)} className='bg-amber-400 text-black p-1 hover:cursor-pointer' size="small">Add to Cart</button>
+        <Button onClick={() => navigate(`/Product/${productInfo.id}`, {state: productInfo})}>View Product</Button>
       </CardActions>
     </Card>
   );

@@ -4,12 +4,7 @@ export const useCart = create((set) => ({
     cart: [],
     addToCart: (newItem) => 
         set((state) => {
-            //console.log(newItem)
-            console.log(state.cart)
             const inCart = state.cart.some((item) => item.product.id === newItem.id)
-           
-            //const chese = 9
-            console.log(inCart)
 
             if (inCart === false){
                 return ({cart: [...state.cart, {product: newItem, quantity: 1}]})
