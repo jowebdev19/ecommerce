@@ -2,9 +2,11 @@ import {create} from 'zustand'
 
 export const useCart = create((set) => ({
     cart: [],
+    quantity: 0,
     addToCart: (newItem) => 
         set((state) => {
             const inCart = state.cart.some((item) => item.product.id === newItem.id)
+            state.quantity++
 
             if (inCart === false){
                 return ({cart: [...state.cart, {product: newItem, quantity: 1}]})
@@ -21,10 +23,14 @@ export const useCart = create((set) => ({
     }
         ),
     removeFromCart: (id) => {
-        set((state) => ({cart: state.cart.filter((item) => {
+        set((state) => {
+            ({cart: state.cart.filter((item) => {
             if (item.id !== id){
                 return item
+            } else {
+                state.quantity = state.quantity - item.quantity
             }
-        })}))
+        })})}
+    )
     }
 }))

@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 export default function ProductCard({productInfo}) {
 
   const addToCart = useCart((state) => state.addToCart)
+  const deleteFromCart = useCart((state) => state.removeFromCart)
   const navigate = useNavigate()
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -31,6 +32,7 @@ export default function ProductCard({productInfo}) {
       <CardActions>
         <button onClick={() => addToCart(productInfo)} className='bg-amber-400 text-black p-1 hover:cursor-pointer' size="small">Add to Cart</button>
         <Button onClick={() => navigate(`/Product/${productInfo.id}`, {state: productInfo})}>View Product</Button>
+        <button onClick={() => deleteFromCart(productInfo)}>delete</button>
       </CardActions>
     </Card>
   );
