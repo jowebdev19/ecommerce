@@ -32,7 +32,7 @@ export default function ProductCard({productInfo}) {
       <CardActions>
         <button onClick={() => addToCart(productInfo)} className='bg-amber-400 text-black p-1 hover:cursor-pointer' size="small">Add to Cart</button>
         <Button onClick={() => navigate(`/Product/${productInfo.id}`, {state: productInfo})}>View Product</Button>
-        <button onClick={() => deleteFromCart(productInfo)}>delete</button>
+        <button onClick={() => deleteFromCart(productInfo.id)}>delete</button>
       </CardActions>
     </Card>
   );

@@ -8,12 +8,15 @@ export default function Header() {
   const navigate = useNavigate()
   const [mobileMenu, setMobileMenu] = useState('hidden')
   const [openCartMenu, setOpenCartMenu] = useState(false)
-  const cart = useCart((state) => state.cart)
-  const quantity = useCart((state) => state.quantity)
+  const cart = useCart((state) => state.cart.items)
+  const quantity = useCart((state) => state.cart.quantity)
+  console.log(quantity)
+  console.log(cart)
 
   const handleMenuClick = () => {
     mobileMenu === 'hidden' ? setMobileMenu('block') : setMobileMenu('hidden')
   }
+
 
   return (
     <div className='relative flex flex-row justify-between items-center p-5'>
