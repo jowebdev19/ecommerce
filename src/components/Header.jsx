@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ShoppingBag, Menu } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../zustand/useCart'
+import CartItem from './CartItem'
 
 export default function Header() {
   const navigate = useNavigate()
@@ -10,8 +11,6 @@ export default function Header() {
   const [openCartMenu, setOpenCartMenu] = useState(false)
   const cart = useCart((state) => state.cart.items)
   const quantity = useCart((state) => state.cart.quantity)
-  console.log(quantity)
-  console.log(cart)
 
   const handleMenuClick = () => {
     mobileMenu === 'hidden' ? setMobileMenu('block') : setMobileMenu('hidden')
@@ -41,8 +40,10 @@ export default function Header() {
           }</span>
             {
               openCartMenu && (
-                <ul className='absolute bg-white'>
-                  {}
+                <ul className='absolute bg-white right-[-7em]'>
+                  {cart.map((item) => {
+                    return <CartItem product={item} />
+                  })}
                 </ul>
               )
             }
