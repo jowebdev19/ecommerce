@@ -23,14 +23,13 @@ export default function Header() {
         <ul className='h-full w-full' onClick={handleMenuClick}>
           <li className='text-center hover:cursor-pointer text-3xl border-b-1 p-3 w-full hover:bg-gray-300'><Link>Home</Link></li>
           <li className='text-center hover:cursor-pointer text-3xl border-b-1 p-3 w-full hover:bg-gray-300'><Link>Shop</Link></li>
-          <li className='text-center hover:cursor-pointer text-3xl border-b-1 p-3 w-full hover:bg-gray-300'><Link>Contact Us</Link></li>
           <li onClick={handleMenuClick} className='text-red-600 text-center hover:cursor-pointer text-3xl  p-3 w-full hover:bg-gray-300'>Close</li>
         </ul>
       </div>
         <span className='text-3xl font-sans font-light tracking tracking-widest hover:cursor-pointer' onClick={() => navigate('/')}>Nox Clothing</span>
         <Menu onClick={handleMenuClick} className='block md:hidden hover:cursor-pointer' size={35}/>         
         <nav className='hidden md:block'>
-          <Link className='nav-link'>Home</Link>
+          <Link className='nav-link' to='/'>Home</Link>
           <Link className='nav-link' to='/shop'>Shop</Link>
         </nav>
         <button className='relative w-[24px] mr-28' onClick={() => navigate('/checkout')}>

@@ -37,7 +37,6 @@ export const useCart = create((set) => ({
     }),
   removeFromCart: (item) => {
     set((state) => {
-      console.log(state.cart)
       if (item.quantity === 1){
         return ({
           cart: {
@@ -82,4 +81,18 @@ export const useCart = create((set) => ({
       // });
     });
   },
+  deleteFromCart: (item) => {
+    set((state) => {
+      return({
+        cart: {
+            quantity: state.cart.quantity - state.cart.items.find((element) => element.product.id === item.product.id).quantity,
+            items: state.cart.items.filter((element) => {
+              if (item.product.id !== element.product.id) {
+                return item;
+              }
+            }),
+          },
+      })
+    })
+  }
 }));

@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Hero() {
+  const navigate = useNavigate()
   return (
     <section className='hidden md:flex relative flex-row justify-evenly items-center w-full'>
       <img className='w-full' src='/heroimglarge.webp'/>
@@ -10,7 +12,7 @@ export default function Hero() {
                <h2 className='"text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-wider"'>New Season Collection</h2>  
                <p className="text-white text-lg mb-8 max-w-lg mx-auto lg:mx-0">Discover the latest trends and elevate your style with our new arrivals. Quality clothing designed for everyday comfort.</p>   
                <div className="hero-btns">
-                  <button className='bg-white text-gray-800 px-8 py-3 rounded-none hover:bg-gray-800 hover:text-white transition duration-300 font-medium tracking-wide hover:cursor-pointer'>Shop Now</button>
+                  <button onClick={() => navigate('/shop')} className='bg-white text-gray-800 px-8 py-3 rounded-none hover:bg-gray-800 hover:text-white transition duration-300 font-medium tracking-wide hover:cursor-pointer'>Shop Now</button>
                </div>    
             </div>
         </div>

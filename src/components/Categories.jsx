@@ -22,7 +22,7 @@ export default function Categories() {
       id: 3,
       name: "Electronics",
       image:
-        "https://images.unsplash.com/photo-1556306535-0f09a537f0a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1586920740199-47ce35183cfd?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       link: "electronics",
     },
   ];
@@ -36,7 +36,7 @@ export default function Categories() {
           {categories.map((category) => (
             <a
               key={category.id}
-              className="group block relative overflow-hidden h-96"
+              className="group block relative overflow-hidden h-96 hover:cursor-pointer"
               onClick={() =>navigate('/shop', {state: category.link})}
             >
               <img
