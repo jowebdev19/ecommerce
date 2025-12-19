@@ -35,18 +35,51 @@ export const useCart = create((set) => ({
         };
       }
     }),
-  removeFromCart: (id) => {
+  removeFromCart: (item) => {
     set((state) => {
-      return ({
-        cart: {
-          quantity: state.cart.quantity - state.cart.items.find((element) => element.product.id === id).quantity,
-          items: state.cart.items.filter((item) => {
-            if (item.product.id !== id) {
-              return item;
-            }
-          }),
-        },
-      });
+      console.log(state.cart)
+      if (item.quantity === 1){
+        return ({
+          cart: {
+            quantity: state.cart.quantity - state.cart.items.find((element) => element.product.id === item.product.id).quantity,
+            items: state.cart.items.filter((element) => {
+              if (item.product.id !== element.product.id) {
+                return item;
+              }
+            }),
+          },
+        });
+      } else {
+        return ({
+          cart: {
+            quantity: state.cart.quantity - 1,
+            items: state.cart.items.map((product) => {
+              if (product.product.id === item.product.id){
+                return {
+                  ...product,
+                  quantity: product.quantity - 1,
+                }
+              } else {
+                return product
+              }
+            })
+          }
+        })
+      }
+
+
+
+      
+      // return ({
+      //   cart: {
+      //     quantity: state.cart.quantity - state.cart.items.find((element) => element.product.id === id).quantity,
+      //     items: state.cart.items.filter((item) => {
+      //       if (item.product.id !== id) {
+      //         return item;
+      //       }
+      //     }),
+      //   },
+      // });
     });
   },
 }));

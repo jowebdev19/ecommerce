@@ -33,20 +33,11 @@ export default function Header() {
           <Link className='nav-link'>Home</Link>
           <Link className='nav-link' to='/shop'>Shop</Link>
         </nav>
-        <button className='relative w-[24px] mr-28'>
-          <ShoppingBag onClick={() => setOpenCartMenu((prev) => !prev)} className='hover:cursor-pointer'/>
+        <button className='relative w-[24px] mr-28' onClick={() => navigate('/checkout')}>
+          <ShoppingBag onClick={() => setOpenCartMenu((prev) => !prev)} className='hover:cursor-pointer' />
           <span className='absolute -top-1 -right-1 bg-amber-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center'>{
             quantity
           }</span>
-            {
-              openCartMenu && (
-                <ul className='absolute bg-white right-[-7em]'>
-                  {cart.map((item) => {
-                    return <CartItem product={item} />
-                  })}
-                </ul>
-              )
-            }
         </button>
     </div>
   )

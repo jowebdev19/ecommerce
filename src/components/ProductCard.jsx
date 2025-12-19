@@ -12,8 +12,12 @@ import { useNavigate } from 'react-router-dom';
 export default function ProductCard({productInfo}) {
 
   const addToCart = useCart((state) => state.addToCart)
-  const deleteFromCart = useCart((state) => state.removeFromCart)
   const navigate = useNavigate()
+  const priceFormatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      currencyDisplay: 'narrowSymbol'
+    })
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -25,14 +29,14 @@ export default function ProductCard({productInfo}) {
         <Typography gutterBottom variant="h5" component="div">
           {productInfo.title}
         </Typography>
+        <Typography variant='h5' component='div' className='py-2 pr-2'>{priceFormatter.format(productInfo.price)}</Typography>
         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
           {productInfo.description}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions className='flex-col lg:flex-row'>
         <button onClick={() => addToCart(productInfo)} className='bg-amber-400 text-black p-1 hover:cursor-pointer' size="small">Add to Cart</button>
         <Button onClick={() => navigate(`/Product/${productInfo.id}`, {state: productInfo})}>View Product</Button>
-        <button onClick={() => deleteFromCart(productInfo.id)}>delete</button>
       </CardActions>
     </Card>
   );

@@ -5,6 +5,11 @@ export default function ProductPage() {
   const location = useLocation()
   const data = location.state
   const navigate = useNavigate()
+  const priceFormatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      currencyDisplay: 'narrowSymbol'
+    })
 
   return (
     <div className='flex flex-col md:flex-row justify-evenly items-center'>
@@ -13,7 +18,7 @@ export default function ProductPage() {
           <div>
             <h1 className='text-amber-400 text-5xl text-center'>{data.title}</h1>
             <div className='flex flex-col justify-between md:justify-evenly items-center my-6'>
-              <span className='text-3xl '>${data.price}</span>
+              <span className='text-3xl '>{priceFormatter.format(data.price)}</span>
               <span className='text-xl text-gray-700 hover:underline hover:cursor-pointer' onClick={() => navigate('/shop', {state: data.category})}>{data.category}</span>
             </div>
           </div>
